@@ -3,8 +3,8 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { ShoppingList } from './shopping-list.schema';
 import {
-  CreateShoppingListInput,
-  UpdateShoppingListInput,
+  AddShoppingListItemInput,
+  UpdateShoppingListItemInput,
 } from './dto/shopping-list.dto';
 
 @Injectable()
@@ -14,9 +14,9 @@ export class ShoppingListService {
     private shoppingListModel: Model<ShoppingList>,
   ) {}
 
-  async create(input: CreateShoppingListInput): Promise<ShoppingList> {
-    const shoppingList = new this.shoppingListModel(input);
-    return shoppingList.save();
+  async create(input: AddShoppingListItemInput): Promise<ShoppingList> {
+    const shoppingListItem = new this.shoppingListModel(input);
+    return shoppingListItem.save();
   }
 
   async findAll(): Promise<ShoppingList[]> {
@@ -29,7 +29,7 @@ export class ShoppingListService {
 
   async update(
     id: string,
-    input: UpdateShoppingListInput,
+    input: UpdateShoppingListItemInput,
   ): Promise<ShoppingList> {
     return this.shoppingListModel
       .findByIdAndUpdate(id, input, { new: true })

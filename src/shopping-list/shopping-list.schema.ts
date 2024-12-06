@@ -9,6 +9,9 @@ export class ShoppingList extends Document {
   @Prop({ required: true })
   amount: number;
 
+  @Prop({ required: true })
+  unit: 'pc' | 'kg';
+
   @Prop({ type: Date })
   createdAt: Date;
 

@@ -12,6 +12,12 @@ export class ShoppingListType {
   amount: number;
 
   @Field()
+  unit: 'pc' | 'kg';
+
+  @Field()
+  isCompleted: boolean;
+
+  @Field()
   createdAt: Date;
 
   @Field()
@@ -19,19 +25,31 @@ export class ShoppingListType {
 }
 
 @InputType()
-export class CreateShoppingListInput {
+export class AddShoppingListItemInput {
   @Field()
   name: string;
 
   @Field(() => Int)
   amount: number;
+
+  @Field()
+  unit: 'pc' | 'kg';
+
+  @Field()
+  isCompleted: boolean;
 }
 
 @InputType()
-export class UpdateShoppingListInput {
+export class UpdateShoppingListItemInput {
   @Field({ nullable: true })
   name?: string;
 
   @Field(() => Int, { nullable: true })
   amount?: number;
+
+  @Field()
+  unit?: 'pc' | 'kg';
+
+  @Field()
+  isCompleted?: boolean;
 }
