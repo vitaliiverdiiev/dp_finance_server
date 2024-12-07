@@ -5,6 +5,7 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { UsersModule } from './users/users.module';
     }),
     UsersModule,
     ShoppingListModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
