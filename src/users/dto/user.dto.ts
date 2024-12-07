@@ -1,12 +1,12 @@
-import { IsEmail, IsString } from 'class-validator';
+import { IsEmail, IsStrongPassword } from 'class-validator';
 import { PartialType } from '@nestjs/mapped-types';
 
 class UserDto {
-  @IsString()
-  username: string;
-
   @IsEmail()
   email: string;
+
+  @IsStrongPassword()
+  password: string;
 }
 
 export class CreateUserDto extends UserDto {}
